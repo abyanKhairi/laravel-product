@@ -6,9 +6,8 @@
             {{ session('message') }}
         </div>
     @endif
-
-    <button type="button" class="bg-gray-800 text-white font-bold p-3 rounded mb-3" data-bs-toggle="modal"
-        data-bs-target="#productModal">
+    </button>
+    <button type="button" class="bg-gray-800 text-white font-bold p-3 rounded mb-3" onclick="productModal.showModal()">
         Add Product
     </button>
 
@@ -18,7 +17,7 @@
         <div class="card-body p-4">
 
             <div class="flex mb-4 gap-2">
-                <input type="text" class="border border-gray-300 p-2 rounded" wire:modellive="search"
+                <input type="text" class="border border-gray-300 p-2 rounded" wire:model.live="search"
                     placeholder="Search Product...">
                 <select class="border border-gray-300 p-2 rounded" wire:model.live="pagi" id="">
                     <option value="5">5</option>
@@ -62,7 +61,7 @@
                             <x-table.td>{{ $product->category->categories }}</x-table.td>
                             <x-table.td>
                                 <button wire:click="edit({{ $product->id }})" class="btn btn-primary btn-sm"
-                                    data-bs-toggle="modal" data-bs-target="#productModal">
+                                    onclick="productModal.showModal()">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </button>
                                 <button class="btn btn-danger btn-sm"

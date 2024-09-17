@@ -7,8 +7,7 @@
         </div>
     @endif
 
-    <button type="button" class="bg-gray-800 text-white font-bold p-3 rounded mb-3" data-bs-toggle="modal"
-        data-bs-target="#categoryModal">
+    <button type="button" class="bg-gray-800 text-white font-bold p-3 rounded mb-3" onclick="categoryModal.showModal()">
         Add Category
     </button>
 
@@ -46,8 +45,7 @@
                             <x-table.td>{!! $category->keterangan !!}</x-table.td>
                             <x-table.td>
                                 <button wire:click="edit({{ $category->id }})" class="btn btn-primary btn-sm"
-                                    data-bs-toggle="modal" data-bs-target="#categoryModal">
-                                    <i class="bi bi-pencil-square"></i> Edit
+                                    data-bs-toggle="modal" onclick="categoryModal.showModal()"></i> Edit
                                 </button>
                                 <button class="btn btn-danger btn-sm"
                                     @click="$dispatch('alert', {get_id: {{ $category->id }}})">

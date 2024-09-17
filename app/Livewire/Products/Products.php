@@ -7,6 +7,8 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+
 
 class Products extends Component
 {
@@ -107,10 +109,25 @@ class Products extends Component
         $this->dispatch('hide-modal');
     }
 
-    public function delete($id)
+    // public function delete($id)
+    // {
+    //     Product::find($id)->delete();
+    //     session()->flash('message', 'Product deleted successfully.');
+    // }
+
+
+    public function delete($get_id)
     {
-        Product::find($id)->delete();
-        session()->flash('message', 'Product deleted successfully.');
+        try {
+            $product = Product::findOrFail($get_id);
+            
+            Storage::delete('public/'. $product->image);
+
+            $product->delete();
+
+        } catch (\Exception $e) {
+            $this->dispatch('sweet-alert', title:'Data Gagal Diubah', icon:'error');
+        }
     }
 
     public function render()
