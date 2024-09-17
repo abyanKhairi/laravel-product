@@ -62,7 +62,7 @@
                             <x-table.td>
                                 <button wire:click="edit({{ $product->id }})" class="btn btn-primary btn-sm"
                                     onclick="productModal.showModal()">
-                                    <i class="bi bi-pencil-square"></i> Edit
+                                    <i class="bi bi-pencil"></i> Edit
                                 </button>
                                 <button class="btn btn-danger btn-sm"
                                     @click="$dispatch('alert', {get_id: {{ $product->id }}})"> <i

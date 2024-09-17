@@ -37,8 +37,8 @@
             </div>
 
             <!-- Save and Cancel Buttons -->
-            <div class="mb-3 text-end">
-                <button type="submit" class="btn btn-success">Save</button>
+            <div class="modal-action">
+                <button type="submit" class="btn btn-primary">Save</button>
                 <button type="button" wire:click="cancel" class="btn btn-danger" data-bs-dismiss="modal">
                     Cancel
                 </button>

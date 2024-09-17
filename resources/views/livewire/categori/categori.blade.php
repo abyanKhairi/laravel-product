@@ -45,7 +45,8 @@
                             <x-table.td>{!! $category->keterangan !!}</x-table.td>
                             <x-table.td>
                                 <button wire:click="edit({{ $category->id }})" class="btn btn-primary btn-sm"
-                                    data-bs-toggle="modal" onclick="categoryModal.showModal()"></i> Edit
+                                    data-bs-toggle="modal" onclick="categoryModal.showModal()"> <i
+                                        class="bi bi-pencil"></i> Edit
                                 </button>
                                 <button class="btn btn-danger btn-sm"
                                     @click="$dispatch('alert', {get_id: {{ $category->id }}})">

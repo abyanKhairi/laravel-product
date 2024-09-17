@@ -75,11 +75,6 @@
                 @error('image')
                     <div class="text-red-500 mt-1">{{ $message }}</div>
                 @enderror
-
-                <!-- Optionally display existing image -->
-                {{-- @if ($product_id && ($product = \App\Models\Product::find($product_id) && $product->image))
-                <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" class="img-fluid mt-2">
-                @endif --}}
             </div>
         </div>
 
