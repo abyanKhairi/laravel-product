@@ -69,5 +69,4 @@
         </div>
     </div>
     <x-delete-alert />
-
 </div>

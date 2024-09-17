@@ -46,14 +46,15 @@
                     @forelse ($products as $product)
                         <tr :product="$product" wire:key="{{ $product->id }}">
                             <x-table.td scope="row">{{ $loop->iteration }}</x-table.td>
-                            <x-table.td>
+                            <x-table.img>
                                 @if ($product->image)
-                                    <img class="item" src="{{ asset('storage/' . $product->image) }}"
+                                    <img class="object-contain" src="{{ asset('storage/' . $product->image) }}"
                                         alt="{{ $product->name }}" style="width: 100px; height: auto;">
                                 @else
                                     <span>No Image</span>
                                 @endif
-                            </x-table.td>
+                            </x-table.img>
+
                             <x-table.td>{{ $product->name }}</x-table.td>
                             <x-table.td>{!! $product->description !!}</x-table.td>
                             <x-table.td>{{ $product->jumlah }}</x-table.td>

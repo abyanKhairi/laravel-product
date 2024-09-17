@@ -135,4 +135,10 @@
             }
         });
     });
+
+    Livewire.on('editProduct', () => {
+        if (window.editor) {
+            editor.setData(@this.description);
+        }
+    });
 </script>

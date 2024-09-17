@@ -13,7 +13,6 @@ class TransaksiList extends Component
     public $search;
     public $pagi = 5;
 
-    // Method for redirecting - typically handled outside Livewire components
     public function addTran()
     {
         return redirect()->to("transaksi");

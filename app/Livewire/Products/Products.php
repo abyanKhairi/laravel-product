@@ -39,7 +39,7 @@ class Products extends Component
         $this->harga = '';
         $this->category_id = '';
         $this->description = '';
-        $this->image = null; // Ensure this is null on reset
+        $this->image = null;
         $this->product_id = '';
         $this->isEdit = false;
     }

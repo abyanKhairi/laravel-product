@@ -75,4 +75,10 @@
             }
         });
     });
+
+    Livewire.on('editCategory', () => {
+        if (window.editor) {
+            editor.setData(@this.keterangan);
+        }
+    });
 </script>

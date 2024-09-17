@@ -30,7 +30,7 @@ class Categori extends Component
         $this->title = 'Add New Category';
         $this->reset('categories', 'keterangan', 'category_id');
         $this->categories = '';
-        $this->keterangan = ''; // Reset description
+        $this->keterangan = ''; 
         $this->category_id = '';
         $this->isEdit = false;
     }
