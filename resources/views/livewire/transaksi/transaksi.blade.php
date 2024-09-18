@@ -97,7 +97,7 @@
             <div class="grid gap-6 md:grid-cols-2">
                 <div class="mb-6">
                     <label for="pembayaran" class="block text-gray-700 font-semibold mb-2">Pembayaran</label>
-                    <input type="number" id="pembayaran" wire:model="pembayaran"
+                    <input type="number" id="pembayaran" wire:model.live="pembayaran"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     @error('pembayaran')
                         <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>

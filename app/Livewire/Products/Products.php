@@ -97,6 +97,7 @@ class Products extends Component
         $this->harga = $product->harga;
         $this->category_id = $product->category_id;
         $this->description = $product->description;
+        $this->image = $product->image;
         $this->isEdit = true;
 
         $this->dispatch('editProduct');

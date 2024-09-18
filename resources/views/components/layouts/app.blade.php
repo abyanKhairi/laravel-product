@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-</head> @vite('resources/css/app.css')
-<script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('js/ckeditor-config.js') }}"></script>
+    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <x-navbar></x-navbar>
-
 
     {{ $slot }}
 
@@ -28,6 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
+
     @stack('scripts')
 </body>
 

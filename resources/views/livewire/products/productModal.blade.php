@@ -76,6 +76,12 @@
                     <div class="text-red-500 mt-1">{{ $message }}</div>
                 @enderror
             </div>
+            
+
+            {{-- <div class="items-center justify-center ">
+                <img class="object-contain" src="{{ asset('storage/' . $image) }}" alt="{{ $image }}"
+                    style="width: auto; height: auto;">
+            </div> --}}
         </div>
 
         <div class="modal-action">

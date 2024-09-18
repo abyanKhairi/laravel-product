@@ -34,6 +34,8 @@
                         <x-table.th>Customer</x-table.th>
                         <x-table.th>Transaction Date</x-table.th>
                         <x-table.th>Total</x-table.th>
+                        <x-table.th>Bayar</x-table.th>
+                        <x-table.th>Kembali</x-table.th>
                         <x-table.th>Action</x-table.th>
                     </tr>
                 </x-table.thead>
@@ -44,8 +46,18 @@
                             <x-table.td>{{ $transaction->customer }}</x-table.td>
                             <x-table.td>{{ \Carbon\Carbon::parse($transaction->tanggal_transaction)->format('d/m/Y') }}</x-table.td>
                             <x-table.td>Rp.
-                                {{ number_format($transaction->details->sum('total'), 0, ',', '.') }}</x-table.td>
+                                {{ number_format($transaction->details->sum('total'), 0, ',', '.') }}
+                            </x-table.td>
+
+                            <x-table.td>Rp.
+                                {{ number_format($transaction->pembayaran) }}</x-table.td>
+
+                            <x-table.td>Rp.
+                                {{ number_format($transaction->kembalian) }}</x-table.td>
                             <x-table.td>
+                                <button class="btn btn-primary btn-sm" wire:click="detail({{ $transaction->id }})"
+                                    onclick="detail.showModal()"> <i class="bi bi-pen"></i>Detail</button>
+
                                 <button class="btn btn-danger btn-sm"
                                     @click="$dispatch('alert', {get_id: {{ $transaction->id }}})">
                                     <i class="bi bi-trash"></i> Delete
@@ -68,5 +80,22 @@
             </div>
         </div>
     </div>
+    @include('livewire.transaksi.detail')
     <x-delete-alert />
 </div>
+
+<script>
+    document.addEventListener('livewire:load', function() {
+        Livewire.on('openModal', () => {
+            document.getElementById('detail').showModal();
+        });
+    });
+
+    window.addEventListener('hide-modal', event => {
+        document.getElementById('detail').close();
+
+        if (window.editor) {
+            editor.setData('');
+        }
+    });
+</script>

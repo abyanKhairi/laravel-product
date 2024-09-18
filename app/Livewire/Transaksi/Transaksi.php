@@ -37,14 +37,14 @@ class Transaksi extends Component
             $product = Product::find($this->selectedProductId);
             if ($product) {
                 if ($product->jumlah <= 0) {
-                    session()->flash('kurang', 'Product is out of stock.');
+                    session()->flash('kurang', 'Stok Product Ini Sudah Habis');
                     return;
                 }
     
                 if (isset($this->cart[$this->selectedProductId])) {
                     $cartQty = $this->cart[$this->selectedProductId]['qty'];
                     if ($cartQty + 1 > $product->stock) {
-                        session()->flash('kurang', 'Not enough stock available.');
+                        session()->flash('kurang', 'Product Sudah Ditambahkan.');
                         return;
                     }
     
@@ -151,9 +151,6 @@ class Transaksi extends Component
         $this->Inv();
     }
     
-    
-    
-
 
     public function render()
     {
