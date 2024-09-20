@@ -74,8 +74,8 @@
                     @empty
                         <tr>
                             <x-table.td colspan="4">
-                                <span class="text-danger">
-                                    <strong>No Product Found!</strong>
+                                <span class="text-danger text-red-500 font-bold">
+                                    No Product Found!
                                 </span>
                             </x-table.td>
                         </tr>

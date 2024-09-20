@@ -12,11 +12,11 @@ return new class extends Migration {
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete(); // Changed 'categori_id' to 'category_id'
-            $table->string('image');
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete(); 
+            $table->string('image')->nullable();
             $table->string('name');
             $table->integer('jumlah');
-            $table->text('description'); // Changed to 'text' type for CKEditor content
+            $table->text('description'); 
             $table->decimal('harga', 10, 2);
             $table->timestamps();
         });

@@ -67,8 +67,8 @@
                     @empty
                         <tr>
                             <x-table.td colspan="4">
-                                <span class="text-danger">
-                                    <strong>No Transaction Found!</strong>
+                                <span class="text-danger text-red-500 font-bold">
+                                    No Transaction Found!
                                 </span>
                             </x-table.td>
                         </tr>

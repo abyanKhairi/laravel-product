@@ -26,6 +26,7 @@ class Products extends Component
     public $title = 'Add New Product';
     public $search;
     public $pagi = 5;
+    public $currentImage;
 
     public function mount()
     {
@@ -46,10 +47,11 @@ class Products extends Component
         $this->isEdit = false;
     }
 
-    public function save()
+
+public function save()
 {
     $this->validate([
-        'image' => 'nullable|image|max:1024|required_without:product_id',
+        'image' => 'nullable|image|max:1024',
         'name' => 'required|string|max:255',
         'jumlah' => 'required|integer',
         'description' => 'nullable|string',
@@ -69,11 +71,19 @@ class Products extends Component
         if ($this->product_id) {
             $product = Product::findOrFail($this->product_id);
             if ($product->image) {
-                Storage::delete('public/' . $product->image);
+                $filePath = storage_path('app/public/' . $product->image);
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
             }
         }
         $imagePath = $this->image->store('images', 'public');
         $productData['image'] = $imagePath;
+
+
+    } elseif ($this->product_id) {
+        $product = Product::findOrFail($this->product_id);
+        $productData['image'] = $product->image;
     }
 
     if ($this->product_id) {
@@ -90,23 +100,24 @@ class Products extends Component
 }
 
 
-    public function edit($id)
-    {
-        $this->title = 'Edit Product';
-        $product = Product::findOrFail($id);
+public function edit($id)
+{
+    $this->title = 'Edit Product';
+    $product = Product::findOrFail($id);
 
-        $this->product_id = $id;
-        $this->name = $product->name;
-        $this->jumlah = $product->jumlah;
-        $this->harga = $product->harga;
-        $this->category_id = $product->category_id;
-        $this->description = $product->description;
-        $this->image = $product->image;
-        $this->isEdit = true;
+    $this->product_id = $id;
+    $this->name = $product->name;
+    $this->jumlah = $product->jumlah;
+    $this->harga = $product->harga;
+    $this->category_id = $product->category_id;
+    $this->description = $product->description;
+    $this->currentImage = $product->image; 
+    $this->isEdit = true;
 
-        $this->dispatch('editProduct');
-        $this->dispatch('show-product-modal');
-    }
+    $this->dispatch('editProduct');
+    $this->dispatch('show-product-modal');
+}
+
 
     public function cancel()
     {

@@ -110,7 +110,7 @@ class Transaksi extends Component
     public function saveTransaction()
     {
         $this->validate([
-            'customer' => 'required',
+            'customer' => 'nullable',
             'invoice' => 'required',
             'tanggal_transaction' => 'required|date',
             'pembayaran' => 'required|numeric|min:' . $this->getTotalPrice(),
