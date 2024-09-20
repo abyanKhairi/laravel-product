@@ -64,7 +64,6 @@ class TransaksiList extends Component
         $this->kembalian = $transaction->kembalian;
     
         $this->calculateTotal();
-        // Dispatch event to open modal
         $this->dispatch('openModal');
     }
 
@@ -72,7 +71,7 @@ class TransaksiList extends Component
 {
     $this->totalHarga = 0;
     foreach ($this->details as $detail) {
-        $this->totalHarga += $detail->total; // Asumsikan kolom 'total' ada pada setiap detail yang mencakup total harga per item
+        $this->totalHarga += $detail->total; 
     }
 }
     

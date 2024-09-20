@@ -46,45 +46,6 @@ class Products extends Component
         $this->isEdit = false;
     }
 
-    // public function save()
-    // {
-    //     $this->validate([
-    //         'image' => 'nullable|image|max:1024|required_without:product_id',
-    //         'name' => 'required|string|max:255',
-    //         'jumlah' => 'required|integer',
-    //         'description' => 'nullable|string',
-    //         'harga' => 'required|numeric',
-    //         'category_id' => 'required|exists:categories,id',
-    //     ]);
-
-    //     $productData = [
-    //         'name' => $this->name,
-    //         'jumlah' => $this->jumlah,
-    //         'harga' => $this->harga,
-    //         'category_id' => $this->category_id,
-    //         'description' => $this->description,
-    //     ];
-
-    //     if ($this->image) {
-    //         $imagePath = $this->image->store('images', 'public');
-    //         $productData['image'] = $imagePath;
-    //     }
-
-    //     if ($this->product_id) {
-    //         $product = Product::findOrFail($this->product_id);
-    //         $product->update($productData);
-    //     } else {
-    //         Product::create($productData);
-    //     }
-
-    //     session()->flash('message', $this->product_id ? 'Product updated successfully.' : 'Product added successfully.');
-    //     $this->dispatch('hide-modal');
-    //     $this->dispatch('close');
-    //     $this->dispatch('sweet', icon: 'success', title: $this->product_id ? 'Product is updated.' : 'Product is added.', text: $this->product_id ? 'Product is updated.' : 'Product is added.');
-    //     $this->resetFields();
-    // }
-
-
     public function save()
 {
     $this->validate([
