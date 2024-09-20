@@ -19,7 +19,7 @@
             <div class="flex mb-4 gap-2">
                 <input type="text" class="border border-gray-300 p-2 rounded" wire:model.live="search"
                     placeholder="Search Product...">
-                <select class="border border-gray-300 p-2 rounded" wire:model.live="pagi" id="">
+                <select class="border border-gray-300 p-2 rounded" wire:model.live="pagi" wire:click="updatedSearch">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>

@@ -95,8 +95,14 @@ class Categori extends Component
         ]);
     }
 
+    public function updatedPagi()
+{
+    $this->resetPage();
+}
+
     public function updatedSearch()
     {
         $this->resetPage();
+
     }
 }
