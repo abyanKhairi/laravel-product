@@ -45,19 +45,24 @@
                 </div>
             </div>
 
-            <div class="mb-6">
-                <label for="product" class="block text-gray-700 font-semibold mb-2">Select Product</label>
-                <select id="product" required wire:model="selectedProductId"
-                    class="w-full p-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">-- Select Product --</option>
-                    @foreach ($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }} - Rp. {{ $product->harga }}</option>
-                    @endforeach
-                </select>
-            </div>
+            <div class="grid gap-6 md:grid-cols-2">
 
+                <div class="mb-6">
+                    <label for="product" class="block text-gray-700 font-semibold mb-2">Select Product</label>
+                    <select id="product" required wire:model="selectedProductId"
+                        class="w-full p-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">-- Select Product --</option>
+                        @foreach ($products as $product)
+                            <option value="{{ $product->id }}">{{ $product->name }} - Rp. {{ $product->harga }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <button wire:click="addToCart"
-                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Add to Cart</button>
+                class="bg-blue-600 ml-40 text-white w-3/12 px-4 py-2 rounded-lg hover:bg-blue-700 transition">Add to
+                Cart</button>
+
 
             <!-- Cart and Transaction Details -->
             <h3 class="text-2xl font-bold mt-8 mb-6 text-gray-800">Cart</h3>
@@ -100,6 +105,15 @@
                     <input type="number" id="pembayaran" wire:model.live="pembayaran"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     @error('pembayaran')
+                        <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="mb-6">
+                    <label for="total" class="block text-gray-700 font-semibold mb-2">Total</label>
+                    <input type="number" readonly id="total" wire:model="total"
+                        class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100">
+                    @error('total')
                         <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                     @enderror
                 </div>

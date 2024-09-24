@@ -7,9 +7,10 @@
         </div>
     @endif
 
-    <button wire:click="addTran" class="bg-gray-800 font-bold text-white p-3 rounded mb-3">
+    <a wire:navigate href="{{ route('transaksi') }}"
+        class="btn bg-gray-800 font-bold text-white p-3 hover:!text-black rounded mb-3">
         Make Transaction
-    </button>
+    </a>
 
     <div class="card shadow-lg">
         <div class="card-header bg-gray-800 text-white font-bold p-4">Transactions</div>

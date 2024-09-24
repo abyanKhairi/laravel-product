@@ -18,6 +18,7 @@ class Transaksi extends Component
     public $tanggal_transaction;
     public $pembayaran;
     public $kembalian;
+    public $total;
 
     public function mount()
     {
@@ -61,7 +62,9 @@ class Transaksi extends Component
                 }
             }
             $this->selectedProductId = null;
-    
+            
+            
+            $this->calculateTotal();
             $this->calculateKembalian();
         }
     }
@@ -81,6 +84,7 @@ class Transaksi extends Component
         session()->flash('kurang', 'Jumlah produk melebihi stok yang tersedia.');
     }
     $this->calculateKembalian();
+    $this->calculateTotal();
 }
 
 
@@ -88,12 +92,21 @@ class Transaksi extends Component
     {
         unset($this->cart[$productId]);
         $this->calculateKembalian();
+        $this->calculateTotal();
     }
 
     public function calculateKembalian()
     {
         $total = $this->getTotalPrice();
         $this->kembalian = $this->pembayaran - $total;
+    }
+
+    public function calculateTotal(){
+        $this->total = $this->getTotalPrice();
+    }
+
+    public function updatedTotal(){
+        $this->calculateTotal();
     }
 
     public function getTotalPrice()
@@ -104,6 +117,7 @@ class Transaksi extends Component
     public function updatedPembayaran()
     {
         $this->calculateKembalian();
+        $this->calculateTotal();
     }
 
 

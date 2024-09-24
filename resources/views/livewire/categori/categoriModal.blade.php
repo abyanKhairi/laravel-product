@@ -15,26 +15,31 @@
                 @enderror
             </div>
 
-            <!-- keterangan -->
             <div wire:ignore x-data="{ content: @entangle('keterangan') }" x-init="$nextTick(() => {
                 ClassicEditor
-                    .create(document.querySelector('#keterangan'))
+                    .create($refs.keterangan)
                     .then(newEditor => {
                         editor = newEditor;
                         editor.model.document.on('change:data', () => {
-                            @this.set('keterangan', editor.getData());
+                            content = editor.getData();
                         });
-                    })
+            
+                        $watch('content', value => {
+                            if (value !== editor.getData()) {
+                                editor.setData(value);
+                            }
+                        });
+                    });
             })">
                 <label for="keterangan" class="form-label">Keterangan</label>
-                <textarea x-model="content" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan"
-                    wire:model.defer="keterangan"></textarea>
+                <textarea x-ref="keterangan" x-model="content" class="form-control @error('keterangan') is-invalid @enderror"></textarea>
                 @error('keterangan')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
+
 
             <!-- Save and Cancel Buttons -->
             <div class="modal-action">
@@ -48,26 +53,11 @@
 </dialog>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-
-        Livewire.on('editCategory', () => {
-            if (window.editor) {
-                editor.setData(@this.keterangan);
-            }
-        });
-    });
-
     window.addEventListener('hide-modal', event => {
         document.getElementById('categoryModal').close();
 
         if (window.editor) {
             editor.setData('');
-        }
-    });
-
-    Livewire.on('editCategory', () => {
-        if (window.editor) {
-            editor.setData(@this.keterangan);
         }
     });
 </script>

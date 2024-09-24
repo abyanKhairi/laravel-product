@@ -7,7 +7,8 @@
         </div>
     @endif
     </button>
-    <button type="button" class="bg-gray-800 text-white font-bold p-3 rounded mb-3" onclick="productModal.showModal()">
+    <button type="button" class="btn bg-gray-800 text-white font-bold p-3   hover:!text-black rounded mb-3"
+        onclick="productModal.showModal()">
         Add Product
     </button>
 

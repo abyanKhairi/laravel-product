@@ -15,21 +15,29 @@
 
             <!-- Product Description -->
             <div wire:ignore x-data="{ content: @entangle('description') }" x-init="$nextTick(() => {
-                ClassicEditor.create(document.querySelector('#description'))
+                ClassicEditor
+                    .create($refs.description)
                     .then(newEditor => {
                         editor = newEditor;
                         editor.model.document.on('change:data', () => {
-                            @this.set('description', editor.getData());
+                            content = editor.getData();
+                        });
+            
+                        $watch('content', value => {
+                            if (value !== editor.getData()) {
+                                editor.setData(value);
+                            }
                         });
                     });
             })">
                 <label for="description" class="form-label">Product Description</label>
-                <textarea x-model="content" class="textarea textarea-bordered w-full @error('description') textarea-error @enderror"
-                    id="description" wire:model.defer="description"></textarea>
+                <textarea x-ref="description" x-model="content"
+                    class="textarea textarea-bordered w-full @error('description') textarea-error @enderror"></textarea>
                 @error('description')
                     <div class="text-red-500 mt-1">{{ $message }}</div>
                 @enderror
             </div>
+
 
             <!-- Category -->
             <div class="mb-3">
@@ -76,7 +84,7 @@
                     <div class="text-red-500 mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            
+
 
             {{-- <div class="items-center justify-center ">
                 <img class="object-contain" src="{{ asset('storage/' . $image) }}" alt="{{ $image }}"
@@ -93,28 +101,11 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-
-
-
-        Livewire.on('editProduct', () => {
-            if (window.editor) {
-                editor.setData(@this.description);
-            }
-        });
-    });
-
     window.addEventListener('hide-modal', event => {
         document.getElementById('productModal').close();
 
         if (window.editor) {
             editor.setData('');
-        }
-    });
-
-    Livewire.on('editProduct', () => {
-        if (window.editor) {
-            editor.setData(@this.description);
         }
     });
 </script>
