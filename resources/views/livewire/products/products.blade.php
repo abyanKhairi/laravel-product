@@ -51,7 +51,8 @@
                                     <img class="object-contain" src="{{ asset('storage/' . $product->image) }}"
                                         alt="{{ $product->name }}" style="width: 100px; height: auto;">
                                 @else
-                                    <span>No Image</span>
+                                    <img class="object-contain" src="{{ asset('storage/images/default.jpg') }}"
+                                        alt="Default" style="width: 100px; height: auto;">
                                 @endif
                             </x-table.img>
 

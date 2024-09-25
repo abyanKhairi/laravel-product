@@ -4,7 +4,7 @@
 
         <div class="modal-box">
             <h3 class="text-lg font-bold">Detail Transaksi #{{ $this->invoice }}</h3>
-            <p>Customer: {{ $this->customer }}</p>
+            <p>Customer: {{ $this->customer ? $this->customer : 'Customer' }}</p>
             <p>Tanggal: {{ $this->tanggal_transaction }}</p>
             <p>Total Pembayaran: Rp. {{ number_format($this->pembayaran) }}</p>
             <p>Total Kembalian: Rp. {{ number_format($this->kembalian) }}</p>
@@ -30,6 +30,13 @@
                 </tbody>
             </table>
             <div class="modal-action">
+                @if ($this->detaL_id)
+                    <a href="{{ route('print-struk', $this->detaL_id) }}" class="btn btn-primary">
+                        Cetak Struk
+                    </a>
+                @endif
+
+
                 <button class="btn" onclick="document.getElementById('detail').close()"
                     wire:click="close">Close</button>
             </div>

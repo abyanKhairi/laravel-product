@@ -22,7 +22,7 @@ class TransaksiList extends Component
     public $qty;
     public $pembayaran;
     public $kembalian;
-
+    public $detaL_id;
     public $totalHarga;
 
     public function addTran()
@@ -62,6 +62,8 @@ class TransaksiList extends Component
         $this->pembayaran = $transaction->pembayaran;
         $this->details = $transaction->details;
         $this->kembalian = $transaction->kembalian;
+        $this->detaL_id = $transaction->id;
+
     
         $this->calculateTotal();
         $this->dispatch('openModal');

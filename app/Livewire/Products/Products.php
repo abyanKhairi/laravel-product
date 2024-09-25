@@ -132,10 +132,12 @@ public function edit($id)
         try {
             $product = Product::findOrFail($get_id);
     
+            if($product->image){
             $filePath = storage_path('app/public/' . $product->image);
             if (file_exists($filePath)) {
                 unlink($filePath);
             }
+        }
             
             $product->delete();
     

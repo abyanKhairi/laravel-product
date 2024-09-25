@@ -44,7 +44,7 @@
                     @forelse ($transaksi as $transaction)
                         <tr>
                             <x-table.td>{{ $transaction->invoice }}</x-table.td>
-                            <x-table.td>{{ $transaction->customer }}</x-table.td>
+                            <x-table.td>{{ $transaction->customer ? $transaction->customer : 'Customer' }}</x-table.td>
                             <x-table.td>{{ \Carbon\Carbon::parse($transaction->tanggal_transaction)->format('d/m/Y') }}</x-table.td>
                             <x-table.td>Rp.
                                 {{ number_format($transaction->details->sum('total'), 0, ',', '.') }}
@@ -63,6 +63,7 @@
                                     @click="$dispatch('alert', {get_id: {{ $transaction->id }}})">
                                     <i class="bi bi-trash"></i> Delete
                                 </button>
+
                             </x-table.td>
                         </tr>
                     @empty
