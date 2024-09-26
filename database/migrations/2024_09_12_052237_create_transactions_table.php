@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string("customer")->nullable(); // Changed 'costumer' to 'customer'
             $table->string("invoice")->unique(); // Added unique constraint to 'invoice'
             $table->date("tanggal_transaction");
+            $table->decimal("total_keseluruhan", 10, 2);
             $table->decimal("pembayaran", 10, 2);
             $table->decimal("kembalian", 10, 2);
             $table->timestamps();

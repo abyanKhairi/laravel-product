@@ -53,7 +53,8 @@
                         class="w-full p-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">-- Select Product --</option>
                         @foreach ($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->name }} - Rp. {{ $product->harga }}
+                            <option value="{{ $product->id }}">{{ $product->name }} - Rp.
+                                {{ number_format($product->harga) }}
                             </option>
                         @endforeach
                     </select>
@@ -82,13 +83,13 @@
                         <tr class="border-b">
                             <td class="px-4 py-3">{{ $cartItem['name'] }}</td>
                             <td class="px-4 py-3">{{ $cartItem['jumlah'] }}</td>
-                            <td class="px-4 py-3">Rp. {{ $cartItem['price'] }}</td>
+                            <td class="px-4 py-3">Rp. {{ number_format($cartItem['price']) }}</td>
                             <td class="px-4 py-3">
                                 <input type="number" wire:model="cart.{{ $productId }}.qty"
                                     wire:change="updateCart({{ $productId }}, $event.target.value)"
                                     class="w-20 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </td>
-                            <td class="px-4 py-3">Rp. {{ $cartItem['total'] }}</td>
+                            <td class="px-4 py-3">Rp. {{ number_format($cartItem['total']) }}</td>
                             <td class="px-4 py-3">
                                 <button wire:click="removeFromCart({{ $productId }})"
                                     class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition">Remove</button>

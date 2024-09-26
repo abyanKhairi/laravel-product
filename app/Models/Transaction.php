@@ -13,6 +13,7 @@ class Transaction extends Model
         'customer',
         'invoice',
         'tanggal_transaction',
+        'total_keseluruhan',
         'pembayaran',
         'kembalian',
     ];

@@ -63,20 +63,12 @@ class TransaksiList extends Component
         $this->details = $transaction->details;
         $this->kembalian = $transaction->kembalian;
         $this->detaL_id = $transaction->id;
+        $this->totalHarga = $transaction->total_keseluruhan;
 
     
-        $this->calculateTotal();
         $this->dispatch('openModal');
     }
 
-    public function calculateTotal()
-{
-    $this->totalHarga = 0;
-    foreach ($this->details as $detail) {
-        $this->totalHarga += $detail->total; 
-    }
-}
-    
 
     public function delete($id)
     {

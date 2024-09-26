@@ -17,4 +17,3 @@ Route::get("categori", Categori::class)->name("categori");
 Route::get("transaksi", Transaksi::class)->name("transaksi");
 Route::get("transaksiList", TransaksiList::class)->name("transaksiList");
 Route::get('/print-struk/{id}', [StrukController::class, 'printStruk'])->name('print-struk');
-// Route::get('/print-struk/{id}', [StrukController::class, 'printStruk']);

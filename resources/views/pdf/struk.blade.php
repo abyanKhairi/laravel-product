@@ -92,6 +92,10 @@
         <table align="center" cellspacing="0" cellpadding="10">
             <tr>
                 <th class="thSize">Total Harga</th>
+                <th class="tdSize">Rp. {{ number_format($total_keseluruhan, 0, ',', '.') }}</th>
+            </tr>
+            <tr>
+                <th class="thSize">DiBayar</th>
                 <th class="tdSize">Rp. {{ number_format($dibayar, 0, ',', '.') }}</th>
             </tr>
             <tr>

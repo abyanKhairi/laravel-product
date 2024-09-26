@@ -47,7 +47,7 @@
                             <x-table.td>{{ $transaction->customer ? $transaction->customer : 'Customer' }}</x-table.td>
                             <x-table.td>{{ \Carbon\Carbon::parse($transaction->tanggal_transaction)->format('d/m/Y') }}</x-table.td>
                             <x-table.td>Rp.
-                                {{ number_format($transaction->details->sum('total'), 0, ',', '.') }}
+                                {{ number_format($transaction->total_keseluruhan) }}
                             </x-table.td>
 
                             <x-table.td>Rp.

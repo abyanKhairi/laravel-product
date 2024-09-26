@@ -59,7 +59,7 @@
                             <x-table.td>{{ $product->name }}</x-table.td>
                             <x-table.td>{!! $product->description !!}</x-table.td>
                             <x-table.td>{{ $product->jumlah }}</x-table.td>
-                            <x-table.td>Rp. {{ $product->harga }}</x-table.td>
+                            <x-table.td>Rp. {{ number_format($product->harga) }}</x-table.td>
                             <x-table.td>{{ $product->category->categories }}</x-table.td>
                             <x-table.td>
                                 <button wire:click="edit({{ $product->id }})" class="btn btn-primary btn-sm"

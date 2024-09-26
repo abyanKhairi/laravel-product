@@ -143,6 +143,7 @@ class Transaksi extends Component
             'invoice' => $this->invoice,
             'tanggal_transaction' => $this->tanggal_transaction,
             'pembayaran' => $this->pembayaran,
+            'total_keseluruhan' => $this->total,
             'kembalian' => $this->kembalian,
         ]);
     
